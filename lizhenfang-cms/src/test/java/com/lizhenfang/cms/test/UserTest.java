@@ -24,7 +24,7 @@ public class UserTest {
 	private UserDao userDao;
 	@Test
 	public void select() {
-		List<User> userlist=userDao.select();
+		List<User> userlist=userDao.select(null);
 		System.out.println(userlist);
 	}
 }
