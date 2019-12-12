@@ -1,5 +1,6 @@
 package com.lizhenfang.cms.service;
 
+import com.github.pagehelper.PageInfo;
 import com.lizhenfang.cms.pojo.User;
 
 /**
@@ -23,13 +24,13 @@ public interface UserService {
 	public User getByUsername(String username);
 	
 	/**
-	 * 加锁
+	 * 加锁用户
 	 * @param userId
 	 * @return
 	 */
 	boolean locked(Integer userId);
 	/**
-	 * 解锁
+	 * 解锁用户
 	 * @param userId
 	 * @return
 	 */
@@ -41,4 +42,14 @@ public interface UserService {
 	 * @return
 	 */
 	int addScore(Integer userId,int score);
+	/**
+	 *查询用户列表
+	 * @param user
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public PageInfo<User> getPageInfo(User user, int pageNum, int pageSize);
+	
+	
 }
