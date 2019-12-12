@@ -55,4 +55,12 @@ public interface UserDao {
 	 * @return
 	 */
 	int deleteByIds(@Param("ids") String ids);
+	
+	/**
+	 * 修改locked字段值 
+	 * @param userId
+	 * @param locked
+	 * @return
+	 */
+	int updateLocked(@Param("userId") Integer userId, @Param("locked")  int locked);
 }
