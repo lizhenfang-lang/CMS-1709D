@@ -1,15 +1,61 @@
 package com.lizhenfang.cms.pojo;
 
-/**
- * @program:lizhenfang-cms
- * @author: 李振芳
- *
- * @version:2019年12月11日 上午9:42:11
- **/
-public class Slide {
-	private Integer id;
-	private String title;
-	private String picture;
-	private String url;
+import java.io.Serializable;
 
+/**
+*@program:lizhenfang-cms
+* @author: 李振芳
+*
+* @version:2019年12月12日 上午10:51:59
+**/
+public class Slide implements Serializable{
+
+	/**
+	 * 序列化版本号
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+
+    private String title;
+
+    private String picture;
+
+    private String url;
+
+    @Override
+	public String toString() {
+		return "Slide [id=" + id + ", title=" + title + ", picture=" + picture + ", url=" + url + "]";
+	}
+
+	public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture == null ? null : picture.trim();
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
+    }
 }

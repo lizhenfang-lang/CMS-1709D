@@ -1,18 +1,71 @@
 package com.lizhenfang.cms.pojo;
-
-import net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
-
 /**
 *@program:lizhenfang-cms
 * @author: 李振芳
 *
-* @version:2019年12月11日 上午9:39:12
+* @version:2019年12月12日 上午10:50:49
 **/
-public class Comment {
-	private Integer id        ;
-	private Integer articleld ;
-	private Integer userld    ;
-	private String  content   ;
-	private DateTime created   ;
-    
-}  
+import java.io.Serializable;
+
+public class Comment  implements Serializable{
+    /**   
+	 * @Fields serialVersionUID : TODO(这个变量表示什么)   
+	 */  
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
+
+    private Integer articleid;
+
+    private Integer userid;
+
+    private String content;
+
+    private String created;
+
+    @Override
+	public String toString() {
+		return "Comment [id=" + id + ", articleid=" + articleid + ", userid=" + userid + ", content=" + content
+				+ ", created=" + created + "]";
+	}
+
+	public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getArticleid() {
+        return articleid;
+    }
+
+    public void setArticleid(Integer articleid) {
+        this.articleid = articleid;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created == null ? null : created.trim();
+    }
+}

@@ -1,14 +1,51 @@
 package com.lizhenfang.cms.pojo;
 
-/**
- * @program:lizhenfang-cms
- * @author: 李振芳
- *
- * @version:2019年12月11日 上午9:36:29
- **/
-public class Category {
-	private Integer id;
-	private String name;
-	private Integer channel_id;
+import java.io.Serializable;
 
+/**
+*@program:lizhenfang-cms
+* @author: 李振芳
+*
+* @version:2019年12月12日 上午10:49:23
+**/
+public class Category  implements Serializable{
+    /**   
+	 * @Fields serialVersionUID : TODO(这个变量表示什么)   
+	 */  
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
+
+    private String name;
+
+    private Integer channelId;
+    
+    @Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", channelId=" + channelId + "]";
+	}
+
+	public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(Integer channelId) {
+        this.channelId = channelId;
+    }
 }
