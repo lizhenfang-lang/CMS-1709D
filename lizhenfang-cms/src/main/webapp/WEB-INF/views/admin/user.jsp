@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   	<form class="form-inline">
@@ -7,7 +8,7 @@
 	  <div class="form-group mx-sm-3 mb-2">
 	    <input type="text" name="nickname" value="${user.nickname }" class="form-control" placeholder="请输入昵称">
 	  </div>
-	  <input type="hidden" name="pageNum">
+	  <input type="hidden" name="pageNum" value="${pageInfo.pageNum }">
 	  <button type="button" class="btn btn-primary mb-2" onclick="query()">查询</button>
 	</form>
   
@@ -47,7 +48,7 @@
 	function locked(id){
 		$.post('/admin/user/locked',{userId:id},function(res){
 			if(res){
-				reload();
+				query();
 			}
 		})
 	}
@@ -55,7 +56,7 @@
 	function unLocked(id){
 		$.post('/admin/user/unLocked',{userId:id},function(res){
 			if(res){
-				reload();
+				query();
 			}
 		})
 	}

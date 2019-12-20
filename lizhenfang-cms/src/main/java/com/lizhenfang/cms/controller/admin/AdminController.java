@@ -1,17 +1,21 @@
 package com.lizhenfang.cms.controller.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.druid.stat.TableStat.Mode;
 import com.github.pagehelper.PageInfo;
+import com.lizhenfang.cms.pojo.Article;
+import com.lizhenfang.cms.pojo.Channel;
 import com.lizhenfang.cms.pojo.User;
+import com.lizhenfang.cms.service.ArticleService;
 import com.lizhenfang.cms.service.UserService;
+
 
 /**
  * @program:lizhenfang-cms
@@ -24,9 +28,11 @@ import com.lizhenfang.cms.service.UserService;
 public class AdminController {
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ArticleService articleService;
 	/**
 	 * 后台登录
-	 * 
 	 * @return
 	 */
 	@RequestMapping("/")
@@ -56,17 +62,7 @@ public class AdminController {
 		return "admin/welcome";
 
 	}
-
-	/**
-	 * 文章管理
-	 * 
-	 * @return
-	 */
-	@RequestMapping("/article")
-	public String article() {
-		return "admin/article";
-
-	}
+	
 	/**
 	 * 用户管理
 	 * 
@@ -104,14 +100,51 @@ public class AdminController {
     	return locked;
     	
     }
-	/**
-	 * 系统设置
+    /**
+	 * 文章管理
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/settings")
-	public String settings() {
-		return "admin/settings";
-
+	@RequestMapping("/article")
+	public String article(Article article,Model model,
+			@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="pageSize",defaultValue="3") int pageSize) {
+		//设置文章状态
+		article.setStatusIds("0,-1,1");
+		PageInfo<Article> pageInfo = articleService.getPageInfo(article,pageNum,pageSize);
+		model.addAttribute("pageInfo", pageInfo);
+		List<Channel> channelList = articleService.getChannelList();
+		model.addAttribute("channelList", channelList);
+		return "admin/article";
 	}
+
+	
+	
+	/**
+	 * @Title: updateArticleStatus   
+	 * @Description: 修改文章状态   
+	 * @param: @param article
+	 * @param: @return      
+	 * @return: boolean      
+	 * @throws
+	 */
+	@RequestMapping("/article/update/status")
+	@ResponseBody
+	public boolean updateArticleStatus(Article article) {
+		return articleService.updateStatus(article.getId(), article.getStatus());
+	}
+	/**
+	 * @Title: addHot  
+	 * @Description: 文章加热
+	 * @param: @param article
+	 * @param: @return      
+	 * @return: boolean      
+	 * @throws
+	 */
+	@RequestMapping("/article/addHot")
+	@ResponseBody
+	public boolean addHot(Article article) {
+		return articleService.addHot(article.getId());
+	}
+	
+	
 }
