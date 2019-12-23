@@ -17,13 +17,14 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-sm-10">
-			<button type="button" class="btn btn-primary" onclick="save()">保存设置</button>
+			<input type="button" class="btn btn-primary" onclick="save()" value="保存">
 		</div>
 	</div>
 	<div class="alert alert-danger" role="alert" style="display: none"></div>
 </form>
 <script type="text/javascript">
 	function save() {
+		alert("2345678");
 		$.post("/admin/settings/save",$("form").serialize(),function(res){
 			if(res.result){
 				$(".alert").html("设置成功");

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lizhenfang.cms.dao.CarDao">
+    <select id="select" resultType="Car">
+       select * from car
+       <where>
+         <if test="car.name!=null and car.name!=''">
+             name like '%${car.name}%'
+         </if>
+       </where>
+    </select>
+    
+    <delete id="deleteAll">
+     delete from car where id in(${ids})
+    </delete>
+    
+    <delete id="deleteid">
+     delete from car where id =#{id}
+    </delete>
+    
+    <select id="getById" resultType="Car">
+       select * from car where id=#{id}
+    </select>
+    
+    <select id="count" resultType="int">
+       select count(1) from car
+    </select>
+    
+    <insert id="add">
+      insert into car values(null,#{car.name},#{car.price},
+      #{car.state},#{car.color}) 
+    </insert>
+    
+    <update id="update">
+       update car set name=#{car.name}, price=#{car.price},
+       state=#{car.state}, color=#{car.color} where id=#{car.id} 
+    </update>
+</mapper>

@@ -13,7 +13,9 @@
 			<input type="text" id="url" name="url" value="${link.url }" class="form-control" placeholder="请输入Url">
 		</div>
 	</div>
+	
 	<input type="hidden" id="id" name="id" value="${link.id }">
+	
 	<div class="form-group row">
 		<div class="col-sm-10">
 			<button type="button" class="btn btn-primary" onclick="save();">保存</button>

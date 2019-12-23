@@ -111,6 +111,13 @@
 	    where id = #{id}
 	</update>
 	
+	<update id="addTousu">
+		update cms_article
+	    set 
+	      tousuCnt = tousuCnt+1
+	    where id = #{id}
+	</update>
+	
 	<update id="updateDeletedById">
 		update cms_article
 	    set 

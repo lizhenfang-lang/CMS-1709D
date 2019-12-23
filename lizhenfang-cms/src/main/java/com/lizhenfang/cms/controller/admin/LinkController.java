@@ -37,7 +37,8 @@ public class LinkController {
 	 */
 	@RequestMapping("list")
 	public String list(Link link,Model model,
-			@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="pageSize",defaultValue="3") int pageSize) {
+			@RequestParam(value="pageNum",defaultValue="1") int pageNum,
+			@RequestParam(value="pageSize",defaultValue="3") int pageSize) {
 		PageInfo<Link> pageInfo = linkService.getPageInfo(link,pageNum,pageSize);
 		model.addAttribute("pageInfo", pageInfo);
 		return "link/list";
@@ -51,7 +52,7 @@ public class LinkController {
 	 * @return: String      
 	 * @throws
 	 */
-	@RequestMapping(value="edit",method=RequestMethod.GET)
+	@RequestMapping("edit")
 	public String update(Integer id,Model model) {
 		if(id!=null) {
 			Link link = linkService.getById(id);

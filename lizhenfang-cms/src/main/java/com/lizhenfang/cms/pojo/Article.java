@@ -43,18 +43,38 @@ public class Article implements Serializable{
     private String content;
     private String statusIds;
     
+    private int tousuCnt;
     
-    @Override
-   	public String toString() {
-   		return "Article [id=" + id + ", title=" + title + ", picture=" + picture + ", channelId=" + channelId
-   				+ ", categoryId=" + categoryId + ", userId=" + userId + ", hits=" + hits + ", hot=" + hot + ", status="
-   				+ status + ", deleted=" + deleted + ", created=" + created + ", updated=" + updated + ", commentcnt="
-   				+ commentcnt + ", content=" + content + "]";
-   	}
+    
 
        
        
-   	public String getStatusIds() {
+   	@Override
+	public String toString() {
+		return "Article [id=" + id + ", title=" + title + ", picture=" + picture + ", channelId=" + channelId
+				+ ", categoryId=" + categoryId + ", channelName=" + channelName + ", categoryName=" + categoryName
+				+ ", userId=" + userId + ", hits=" + hits + ", hot=" + hot + ", nickname=" + nickname + ", status="
+				+ status + ", deleted=" + deleted + ", created=" + created + ", updated=" + updated + ", commentcnt="
+				+ commentcnt + ", content=" + content + ", statusIds=" + statusIds + ", tousuCnt=" + tousuCnt + "]";
+	}
+
+   	
+	public int getTousuCnt() {
+		return tousuCnt;
+	}
+
+
+	public void setTousuCnt(int tousuCnt) {
+		this.tousuCnt = tousuCnt;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	public String getStatusIds() {
    		return statusIds;
    	}
 

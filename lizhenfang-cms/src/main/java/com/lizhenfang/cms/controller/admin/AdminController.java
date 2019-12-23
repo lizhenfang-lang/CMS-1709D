@@ -109,7 +109,7 @@ public class AdminController {
 	public String article(Article article,Model model,
 			@RequestParam(value="pageNum",defaultValue="1") int pageNum,@RequestParam(value="pageSize",defaultValue="3") int pageSize) {
 		//设置文章状态
-		article.setStatusIds("0,-1,1");
+		article.setStatusIds("0,-1,1,3");
 		PageInfo<Article> pageInfo = articleService.getPageInfo(article,pageNum,pageSize);
 		model.addAttribute("pageInfo", pageInfo);
 		List<Channel> channelList = articleService.getChannelList();

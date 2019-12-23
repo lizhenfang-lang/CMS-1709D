@@ -37,7 +37,18 @@ public class User implements Serializable{
     
     private String headimg;
    
-    public boolean isAdmin() {
+    private String isMima;
+    
+    public String getIsMima() {
+		return isMima;
+	}
+
+	public void setIsMima(String isMima) {
+		this.isMima = isMima;
+	}
+
+	
+	public boolean isAdmin() {
     	return "1".equals(getRole());
     }
     
@@ -48,11 +59,14 @@ public class User implements Serializable{
         return DateUtil.format(this.getBirthday());
     }
 
-    @Override
+    
+
+	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", nickname=" + nickname
 				+ ", birthday=" + birthday + ", gender=" + gender + ", locked=" + locked + ", score=" + score
-				+ ", role=" + role + ", url=" + url + ", createTime=" + createTime + ", updateTime=" + updateTime + "]";
+				+ ", role=" + role + ", url=" + url + ", createTime=" + createTime + ", updateTime=" + updateTime
+				+ ", headimg=" + headimg + ", isMima=" + isMima + "]";
 	}
 
 	public Integer getId() {
