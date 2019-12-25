@@ -78,11 +78,7 @@ public class UserController {
 		String string2md5 = CmsMd5Util.string2MD5(user.getPassword());
 		if(string2md5.equals(userInfo.getPassword())) {
 			session.setAttribute(CmsConstant.UserSessionKey, userInfo);
-			//记住密码
-			if ("1".equals(user.getIsMima())) {
-				int maxAge=1000*60*60*24;
-				CookieUtil.addCookie(response,"username",user.getUsername(), null,null, maxAge);
-			}
+			
 			
 	
 			return JsonResult.sucess();
