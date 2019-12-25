@@ -22,7 +22,7 @@ import com.lizhenfang.cms.service.TousuService;
 **/
 @Controller
 @RequestMapping("/tousu/")
-public class TousuController {
+public class TousuController{
 	@Autowired
 	private TousuService tousuService;
 	/**
@@ -33,7 +33,8 @@ public class TousuController {
 	 * @return: JsonResult      
 	 * @throws
 	 */
-	@RequestMapping(value="add",method=RequestMethod.POST)
+	
+	@RequestMapping("add")
 	public @ResponseBody JsonResult add(Tousu tousu,HttpSession session) {
 		User userInfo = (User)session.getAttribute(CmsConstant.UserSessionKey);
 		if(userInfo==null) {
@@ -46,4 +47,7 @@ public class TousuController {
 		}
 		return JsonResult.fail(10000, "未知错误");
 	}
+	
+	
 }
+

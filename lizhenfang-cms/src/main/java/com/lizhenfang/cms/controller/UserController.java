@@ -83,6 +83,8 @@ public class UserController {
 				int maxAge=1000*60*60*24;
 				CookieUtil.addCookie(response,"username",user.getUsername(), null,null, maxAge);
 			}
+			
+	
 			return JsonResult.sucess();
 		}
 		return JsonResult.fail(500, "未知错误");

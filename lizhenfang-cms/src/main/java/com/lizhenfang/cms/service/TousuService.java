@@ -29,6 +29,7 @@ public class TousuService {
 	 * @return: boolean      
 	 * @throws
 	 */
+	
 	public boolean add(Tousu tousu) {
 		String createdStr = DateUtil.dateTimeFormat.format(new Date());
 		tousu.setCreated(createdStr);
@@ -36,4 +37,6 @@ public class TousuService {
 		articleService.addTousu(tousu.getArticleId());
 		return true;
 	}
+	
+	
 }
