@@ -1,6 +1,7 @@
 package com.lizhenfang.cms.controller;
 import java.util.List;
 
+import javax.annotation.Resource;
 /**
 *@program:lizhenfang-cms
 * @author: 李振芳
@@ -25,6 +26,7 @@ import com.lizhenfang.cms.common.CmsConstant;
 import com.lizhenfang.cms.common.CmsMd5Util;
 import com.lizhenfang.cms.common.CookieUtil;
 import com.lizhenfang.cms.common.JsonResult;
+import com.lizhenfang.cms.dao.ArticleRepository;
 import com.lizhenfang.cms.pojo.Article;
 import com.lizhenfang.cms.pojo.Channel;
 import com.lizhenfang.cms.pojo.Settings;
@@ -40,6 +42,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private ArticleService articleService;
+	
+	
 	/**
 	 * @Title: login   
 	 * @Description: 用户登录界面   
@@ -78,7 +82,10 @@ public class UserController {
 		String string2md5 = CmsMd5Util.string2MD5(user.getPassword());
 		if(string2md5.equals(userInfo.getPassword())) {
 			session.setAttribute(CmsConstant.UserSessionKey, userInfo);
-			
+			if ("1".equals(user.getIsMima())) {
+				int maxAge=1000*60*60*24;
+				CookieUtil.addCookie(response,"username",user.getUsername(),null,null, maxAge);
+			}
 			
 	
 			return JsonResult.sucess();
@@ -162,7 +169,8 @@ public class UserController {
 	@RequestMapping(value="settings",method=RequestMethod.POST)
 	@ResponseBody
 	public JsonResult settings(User user,HttpSession session) {
-		//修改用户信息
+		
+		
 		boolean result = userService.update(user);
 		if(result) {
 			//跟新session中的用户信息
@@ -208,5 +216,10 @@ public class UserController {
 			return JsonResult.sucess();
 		}
 		return JsonResult.fail(CmsConstant.unLoginErrorCode, "未登录");
+	}
+	
+	@RequestMapping("sc")
+	public String sc(HttpServletResponse response,HttpSession session) {
+		return "user/center";
 	}
 }

@@ -2,6 +2,8 @@ package com.lizhenfang.cms.controller.admin;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
+import com.lizhenfang.cms.dao.ArticleRepository;
 import com.lizhenfang.cms.pojo.Article;
 import com.lizhenfang.cms.pojo.Channel;
 import com.lizhenfang.cms.pojo.User;
@@ -31,6 +34,9 @@ public class AdminController {
 	
 	@Autowired
 	private ArticleService articleService;
+	
+	@Resource
+	ArticleRepository articleRepository;
 	/**
 	 * 后台登录
 	 * @return
@@ -130,6 +136,7 @@ public class AdminController {
 	@RequestMapping("/article/update/status")
 	@ResponseBody
 	public boolean updateArticleStatus(Article article) {
+		articleRepository.save(article);
 		return articleService.updateStatus(article.getId(), article.getStatus());
 	}
 	/**

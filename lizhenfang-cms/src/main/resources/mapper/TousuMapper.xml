@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lizhenfang.cms.dao.TousuDao">
+<mapper namespace="com.lizhenfang.cms.dao.TousuDao1">
 	<select id="select" resultType="Tousu">
 		select * 
 		from Tousu
+		<where>
+         <if test="tousu.articleId!=null and tousu.articleId!=''">
+             articleId like '%${tousu.articleId}%'
+         </if>
+       </where>
 	</select>
 	
-	<select id="selectById" resultType="Tousu">
-		select * from Tousu where id=#{id}
-	</select>
 	
+	<select id="getById" resultType="Tousu">
+       select * from Tousu where id=#{id}
+    </select>
+    
 	<select id="count" resultType="int">
 		select count(1) from Tousu
 	</select>
@@ -20,20 +26,32 @@
          #{tousu.created})
 	</insert>
 	
-	<update id="update">
-		update Tousu
-	    set articleId = #{tousu.articleId},
-	      userId = #{tousu.userId},
-	      content = #{tousu.content},
-	      created = #{tousu.created}
-	    where id = #{tousu.id}
-	</update>
+	
 	
 	<delete id="deleteById">
 		delete from Tousu where id=#{id}
 	</delete>
 	
-	<delete id="deleteByIds">
-		delete from Tousu where id in(${ids})
-	</delete>
+	
+	
+	<delete id="deleteAll">
+        delete from Tousu where id in(${ids})
+    </delete>
+    
+    
+    
+    <insert id="add">
+      insert into Tousu (articleId, userId, content,created)
+         values (#{tousu.articleId}, #{tousu.userId}, #{tousu.content}, 
+         #{tousu.created})
+    </insert>
+    
+    <update id="update">
+       update Tousu
+	    set articleId = #{tousu.articleId},
+	      userId = #{tousu.userId},
+	      content = #{tousu.content},
+	      created = #{tousu.created}
+	    where id = #{tousu.id}
+    </update>
 </mapper>

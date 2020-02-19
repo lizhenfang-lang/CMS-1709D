@@ -8,4 +8,5 @@
   <a class="nav-link" href="javascript:;" url="/admin/settings">系统设置</a>
   <a class="nav-link" href="javascript:;" url="/admin/link/list">友情链接管理</a>
   <a class="nav-link" href="javascript:;" url="/admin/car/list">汽车品牌</a>
+  <a class="nav-link" href="javascript:;" url="/admin/Sc/list">我的收藏夹</a>
 </div>

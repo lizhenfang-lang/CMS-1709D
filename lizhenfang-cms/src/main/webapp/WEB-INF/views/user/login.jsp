@@ -30,7 +30,10 @@
 			    <input type="password" id="password" name="password" class="form-control"  placeholder="请输入密码...">
 			  </div>
 			  
-			  
+			  <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="isMima" name="isMima" value="1">
+                  <label class="form-check-label" for="exampleCheck1">记住密码</label>
+              </div>
 			  
 			  
 			  

@@ -144,4 +144,16 @@ public interface ArticleDao {
 	 * @throws
 	 */
 	int addTousu(Integer id);
+	/**
+	 * 
+	 * @Title: addHits 
+	 * @Description: TODO添加点击量
+	 * @param @param id    设定文件 
+	 * @return void    返回类型 
+	 * @throws
+	 */
+	void addHits(Integer id);
+	
+	
+	
 }

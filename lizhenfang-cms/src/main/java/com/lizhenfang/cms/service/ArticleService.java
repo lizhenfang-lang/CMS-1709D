@@ -139,4 +139,17 @@ public interface ArticleService {
 	 * @throws
 	 */
 	void addTousu(Integer id);
+	/**
+	 * 通过kafka添加数据
+	 * @param article
+	 */
+	int kafkaSave(Article article);
+	
+	Article getById(Integer id, String remoteAddr);
+	
+	
+	
+	
+	
+	
 }

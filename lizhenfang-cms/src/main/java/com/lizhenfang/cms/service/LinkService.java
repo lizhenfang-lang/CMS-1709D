@@ -72,5 +72,11 @@ public class LinkService {
 	public boolean delByIds(String ids) {
 		return linkDao.deleteByIds(ids)>0;
 	}
-
+	
+	public List<Link> select() {
+		// TODO Auto-generated method stub
+		Link link = new Link();
+		return linkDao.select(link);
+	}
+	
 }

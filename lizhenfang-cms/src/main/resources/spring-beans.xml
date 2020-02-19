@@ -87,4 +87,13 @@
 		<property name="basePackage" value="com.lizhenfang.cms.dao"></property>
 
 	</bean>
+	
+	<!-- 导入redis配置文件 -->
+	<import resource="spring-redis.xml"/>
+	
+	<!-- 导入kafka配置文件 -->
+	<import resource="spring-kafka-*.xml"/>
+	
+	<!-- 引入es的配置文件 -->
+	<import resource="classpath:spring-es.xml"/>
 </beans>
